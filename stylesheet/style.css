@@ -1,0 +1,57 @@
+:root {
+	background-color: #ffe6e6;
+	font-family: "Lato", sans-serif;
+}
+
+.heading {
+	background-color: #ff471a;
+	border-radius: 30px;
+	padding: 1em;
+	text-align: center;
+	font-size: 30px;
+	color: #fff;
+	text-align: center;
+}
+
+.welcome {
+	background-color: #fff;
+	margin: 10px;
+	padding: 0.5em;
+	text-align: center;
+}
+
+.add-project {
+	padding: 12px 24px;
+	border: 0;
+	background: transparent;
+}
+
+.add-project:hover {
+	transition-delay: 0.2s;
+	color: #ff471a;
+}
+
+.project-card {
+	border-radius: 20px;
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+	padding: 1em;
+}
+
+.project-tile {
+	text-decoration: none;
+	color: yellow;
+}
+
+.project-tile:hover {
+	color: #fff;
+}
+@media (max-width: 500px) {
+	.heading {
+		text-align: left;
+	}
+	.welcome {
+		text-align: left;
+	}
+}
