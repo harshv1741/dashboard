@@ -1,11 +1,12 @@
 :root {
 	background-color: #ffe6e6;
-	font-family: "Lato", sans-serif;
+	font-family: "Megrim", cursive;
+	font-family: "Quicksand", sans-serif;
 }
 
 .heading {
 	background-color: #ff471a;
-	border-radius: 30px;
+	border-radius: 20px;
 	padding: 1em;
 	text-align: center;
 	font-size: 30px;
@@ -13,27 +14,40 @@
 	text-align: center;
 }
 
+.heading2 {
+	background-color: #370062;
+	border-radius: 20px;
+	padding: 1em;
+	text-align: center;
+	font-size: 30px;
+	color: #fff;
+}
+
 .welcome {
-	background-color: #fff;
+	background-color: #e9d5ff;
+	color: #000;
+	border-radius: 20px;
+	height: 50px;
 	margin: 10px;
-	padding: 0.5em;
+	padding: 1em;
 	text-align: center;
 }
 
 .project-button {
 	padding: 12px 24px;
 	border: 0;
+	font-size: 16px;
 	background: transparent;
 }
 
-.add-project:hover {
+.project-button:hover {
 	transition-delay: 0.2s;
 	color: #ff471a;
 }
 
 .project-card {
 	border-radius: 20px;
-	background-color: #000;
+	background-color: #370062;
 	color: #fff;
 	text-align: center;
 	padding: 1em;

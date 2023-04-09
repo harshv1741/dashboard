@@ -1,5 +1,6 @@
 body {
-	font-family: "Lato", sans-serif;
+	font-family: "Megrim", cursive;
+	font-family: "Quicksand", sans-serif;
 }
 
 .sidenav {
@@ -9,7 +10,7 @@ body {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: #ff471a;
+	background-color: #370062;
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top: 60px;
@@ -18,14 +19,17 @@ body {
 .sidenav a {
 	padding: 8px 8px 8px 32px;
 	text-decoration: none;
-	font-size: 25px;
-	color: #000;
+	font-size: 20px;
+	padding-top: 1.5em;
+	color: #fff;
 	display: block;
 	transition: 0.3s;
 }
 
 .sidenav a:hover {
 	color: #f1f1f1;
+	font-size: 22px;
+	font-style: bold;
 }
 
 .sidenav .closebtn {
