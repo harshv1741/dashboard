@@ -9,8 +9,9 @@
 	border-radius: 15px;
 	padding: 1em;
 	text-align: center;
-	font-size: 25px;
+	font-size: 20px;
 	color: #fff;
+	font-style: bold;
 }
 
 .heading2 {
@@ -23,13 +24,23 @@
 }
 
 .welcome {
-	background-color: #e9d5ff;
+	font-size: 11px;
+	/*background-color: #e9d5ff;*/
+	background-color: #fff;
 	color: #000;
 	border-radius: 15px;
 	margin-top: 1em;
 	height: 80px;
 	padding: 1em;
-	text-align: center;
+	text-align: left;
+}
+#hiimg {
+	display: flex;
+	height: 70px;
+	width: 160px;
+	margin-left: 205px;
+	margin-top: 6px;
+	border-radius: 15px;
 }
 
 .project-button {
@@ -74,3 +85,6 @@
 		text-align: left;
 	}
 } */
+.button-container {
+	padding: 0.8em;
+}
