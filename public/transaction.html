@@ -7,6 +7,86 @@
 		<link rel="stylesheet" href="stylesheet/style.css" />
 		<link rel="stylesheet" href="stylesheet/sidenav.css" />
 		<link rel="stylesheet" href="stylesheet/fonts.css" />
+
+		<style>
+			/* Add your CSS styles here */
+
+			/* Responsive table */
+			.transactionTable {
+				margin-top: 1em;
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.transactionTable th,
+			.transactionTable td {
+				padding: 8px;
+				text-align: left;
+				border: 1px solid #ccc;
+			}
+			.transactionTable th {
+				background-color: #eee;
+			}
+			.transactionTable tbody tr:nth-child(even) {
+				background-color: #f2f2f2;
+			}
+			.transactionTable tbody tr:nth-child(odd) {
+				background-color: #ffe6e6;
+			}
+
+			/* Add transaction button */
+			.addTransactionBtn {
+				margin-bottom: 10px;
+			}
+
+			/* Delete transaction button */
+			.deleteTransactionBtn {
+				cursor: pointer;
+				color: red;
+				border: none;
+				background: none;
+			}
+
+			/* Responsive popup form */
+			.popupForm {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				justify-content: center;
+				align-items: center;
+				z-index: 9999;
+			}
+			.popupForm form {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 5px;
+				width: 300px;
+			}
+			.popupForm input[type="text"],
+			.popupForm input[type="date"],
+			.popupForm input[type="number"] {
+				width: 100%;
+				padding: 8px;
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+			.popupForm button {
+				width: 100%;
+				padding: 8px;
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			.popupForm button.cancelBtn {
+				background-color: #ccc;
+			}
+		</style>
 		<title>Transaction</title>
 	</head>
 	<body>
@@ -34,22 +114,6 @@
 				</div>
 			</div>
 
-			<!-- Transaction Page -->
-			<table id="transactionTable">
-				<thead>
-					<tr>
-						<th>Transaction ID</th>
-						<th>Date</th>
-						<th>Description</th>
-						<th>Amount</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- Add rows dynamically using JavaScript -->
-				</tbody>
-			</table>
-			<button onclick="addTransaction()">Add Transaction</button>
 			<script src="scripts/transaction.js"></script>
 			<script src="scripts/sidenav.js"></script>
 		</main>
