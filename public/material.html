@@ -4,36 +4,150 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="sidenav.css" />
-		<link rel="stylesheet" href="fonts.css" />
+		<link rel="stylesheet" href="stylesheet/style.css" />
+		<link rel="stylesheet" href="stylesheet/sidenav.css" />
+		<link rel="stylesheet" href="stylesheet/fonts.css" />
+		<style>
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			th,
+			td {
+				border: 1px solid black;
+				padding: 8px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f2f2f2;
+			}
+
+			tr:nth-child(even) {
+				background-color: #f9f9f9;
+			}
+
+			.add-button {
+				margin-top: 10px;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			th,
+			td {
+				border: 1px solid black;
+				padding: 8px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f2f2f2;
+			}
+
+			tr:nth-child(even) {
+				background-color: #f9f9f9;
+			}
+
+			.add-button {
+				margin-top: 10px;
+			}
+
+			/* Responsive design for smaller screens */
+			@media screen and (max-width: 600px) {
+				table {
+					font-size: 12px;
+				}
+
+				th,
+				td {
+					padding: 4px;
+				}
+
+				.add-button {
+					font-size: 12px;
+				}
+			}
+		</style>
 		<title>Material</title>
 	</head>
 	<body>
-		<div id="mySidenav" class="sidenav">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-				>&times;</a
-			>
-			<a href="index.html">Home</a>
-			<a href="material.html">Material</a>
-			<a href="transaction.html">Transaction</a>
-			<a href="photos.html">Photos</a>
-		</div>
-
-		<div class="heading2">
-			<div style="text-align: left">
-				<span
-					style="font-size: 20px; cursor: pointer; align-items: end"
-					onclick="openNav()"
-					>&#9776;</span
+		<main>
+			<!-- Side Nav Bar -->
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+					>&times;</a
 				>
-				<span style="padding: 0.2em; margin-left: 33%"> Material </span>
+				<a href="index.html">Home</a>
+				<a href="material.html">Material</a>
+				<a href="transaction.html">Transaction</a>
+				<a href="photos.html">Photos</a>
 			</div>
-		</div>
 
-		<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js"></script>
-		<script src="scripts/connect.js"></script>
-		<script src="scripts/sidenav.js"></script>
+			<!-- Material Heading -->
+			<div class="heading2">
+				<div style="text-align: left">
+					<span
+						style="font-size: 20px; cursor: pointer; align-items: end"
+						onclick="openNav()"
+						>&#9776;</span
+					>
+					<span style="padding: 0.2em; margin-left: 33%"> Material </span>
+				</div>
+			</div>
+
+			<h1>Material Inventory</h1>
+			<table id="materialTable">
+				<tr>
+					<th>Material Name</th>
+					<th>Purchased</th>
+					<th>Current Stock</th>
+					<th>Action</th>
+				</tr>
+				<tr>
+					<td>Material 1</td>
+					<td>100</td>
+					<td>80</td>
+					<td><button onclick="deleteMaterial(0)">Delete</button></td>
+				</tr>
+				<tr>
+					<td>Material 2</td>
+					<td>50</td>
+					<td>20</td>
+					<td><button onclick="deleteMaterial(1)">Delete</button></td>
+				</tr>
+			</table>
+			<button class="add-button" onclick="addMaterial()">Add Material</button>
+
+			<script>
+				function addMaterial() {
+					var materialTable = document.getElementById("materialTable");
+					var newRow = materialTable.insertRow(-1);
+					var materialNameCell = newRow.insertCell(0);
+					var purchasedCell = newRow.insertCell(1);
+					var currentStockCell = newRow.insertCell(2);
+					var actionCell = newRow.insertCell(3);
+
+					materialNameCell.innerHTML =
+						"<input type='text' id='materialNameInput'>";
+					purchasedCell.innerHTML = "<input type='number' id='purchasedInput'>";
+					currentStockCell.innerHTML =
+						"<input type='number' id='currentStockInput'>";
+					actionCell.innerHTML =
+						"<button onclick='deleteMaterial(" +
+						newRow.rowIndex +
+						")'>Delete</button>";
+				}
+
+				function deleteMaterial(rowNum) {
+					var materialTable = document.getElementById("materialTable");
+					materialTable.deleteRow(rowNum);
+				}
+			</script>
+
+			<script src="scripts/sidenav.js"></script>
+		</main>
 	</body>
 </html>

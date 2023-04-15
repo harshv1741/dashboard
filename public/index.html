@@ -4,25 +4,36 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="fonts.css" />
+		<link rel="stylesheet" href="stylesheet/style.css" />
+		<link rel="stylesheet" href="stylesheet/fonts.css" />
 		<title>Home</title>
 	</head>
 	<body>
 		<main>
+			<!-- Heading -->
 			<div class="heading">Civil Planner</div>
+
+			<!-- Welcome Screen -->
 			<div class="welcome">
 				Hi 👋! So what are you doing today?
 				<img id="hiimg" src="images/8259.jpg" />
 			</div>
-			<button class="project-button">➕ add-project</button>
+			<!-- Create Project Form -->
+			<form id="projectForm" style="margin: 1em; padding: 1em">
+				<label for="projectName">Project Name:</label>
+				<input type="text" id="projectName" required />
+				<button class="project-button" type="submit">➕ Create Project</button>
+			</form>
 			<div class="project-card">
-				<a class="project-tile" href="material.html">Demo Title</a>
+				<!-- <a class="project-tile" href="material.html">Demo Title</a> -->
+				<ul id="projectList" style="list-style: none"></ul>
 			</div>
 		</main>
 
-		<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-storage.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 		<script src="scripts/connect.js"></script>
+		<script src="scripts/create-project.js"></script>
 	</body>
 </html>
