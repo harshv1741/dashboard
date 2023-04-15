@@ -35,7 +35,22 @@
 			</div>
 
 			<!-- Transaction Page -->
-
+			<table id="transactionTable">
+				<thead>
+					<tr>
+						<th>Transaction ID</th>
+						<th>Date</th>
+						<th>Description</th>
+						<th>Amount</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Add rows dynamically using JavaScript -->
+				</tbody>
+			</table>
+			<button onclick="addTransaction()">Add Transaction</button>
+			<script src="scripts/transaction.js"></script>
 			<script src="scripts/sidenav.js"></script>
 		</main>
 	</body>

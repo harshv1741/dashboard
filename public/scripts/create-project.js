@@ -50,7 +50,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 
 		li.addEventListener("click", function () {
 			// Redirect to material.html with project name as query parameter
-			const projectName = this.textContent;
+			var projectName = this.textContent;
 			window.location.href =
 				"material.html?projectName=" + encodeURIComponent(projectName);
 		});
