@@ -60,12 +60,14 @@ function addPhotoToList(fileName) {
 	listItem.textContent = fileName;
 	var viewButton = document.createElement("button");
 	viewButton.textContent = "View";
+	viewButton.style.marginLeft = "10px";
 	viewButton.onclick = function () {
 		viewPhoto(fileName);
 	};
 	listItem.appendChild(viewButton);
 	var deleteButton = document.createElement("button");
 	deleteButton.textContent = "Delete";
+	deleteButton.style.marginLeft = "10px";
 	deleteButton.onclick = function () {
 		deletePhoto(fileName);
 	};
