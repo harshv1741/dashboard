@@ -61,6 +61,11 @@ function addPhotoToList(fileName) {
 	var viewButton = document.createElement("button");
 	viewButton.textContent = "View";
 	viewButton.style.marginLeft = "10px";
+	viewButton.style.backgroundColor = "blue";
+	viewButton.style.border = "none";
+	viewButton.style.color = "white";
+	viewButton.style.padding = "12px 24px";
+	viewButton.style.borderRadius = "40px";
 	viewButton.onclick = function () {
 		viewPhoto(fileName);
 	};
@@ -68,6 +73,11 @@ function addPhotoToList(fileName) {
 	var deleteButton = document.createElement("button");
 	deleteButton.textContent = "Delete";
 	deleteButton.style.marginLeft = "10px";
+	deleteButton.style.backgroundColor = "red";
+	deleteButton.style.border = "none";
+	deleteButton.style.color = "white";
+	deleteButton.style.padding = "12px 24px";
+	deleteButton.style.borderRadius = "40px";
 	deleteButton.onclick = function () {
 		deletePhoto(fileName);
 	};

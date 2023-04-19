@@ -52,7 +52,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 			// Redirect to material.html with project name as query parameter
 			var projectName = this.textContent;
 			window.location.href =
-				"material.html?projectName=" + encodeURIComponent(projectName);
+				"day_planner.html?projectName=" + encodeURIComponent(projectName);
 		});
 
 		li.appendChild(deleteButton);
