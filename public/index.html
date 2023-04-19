@@ -11,23 +11,23 @@
 	</head>
 	<body>
 		<main>
-			<div id="mySidenav" class="sidenav">
+			<!-- <div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
 					>&times;</a
 				>
 				<a href="day_planner.html">Day Schedular</a>
 				<a href="transaction.html">Transaction</a>
 				<a href="photos.html">Photos</a>
-			</div>
+			</div> -->
 
 			<!-- Heading -->
 			<div class="heading">
 				<div style="text-align: left">
-					<span
+					<!-- <span
 						style="font-size: 20px; cursor: pointer; align-items: end"
 						onclick="openNav()"
 						>&#9776;</span
-					>
+					> -->
 					<span style="padding: 0.2em; margin-left: 35%"> Civil Planner </span>
 				</div>
 			</div>
@@ -37,24 +37,80 @@
 				<img id="hiimg" src="images/8259.jpg" />
 			</div>
 
-			<!-- Create Project Form -->
-			<form id="projectForm" style="margin: 1em; padding: 1em">
-				<label for="projectName">Project Name:</label>
-				<input type="text" id="projectName" required />
-				<button class="project-button" type="submit">➕ Create Project</button>
-			</form>
+			<!-- Add Project Button -->
+			<button
+				id="addProjectButton"
+				style="
+					margin: 1em;
+					padding: 1em;
+					border-radius: 20px;
+					border: none;
+					background-color: #ff471a;
+				"
+			>
+				Add Project
+			</button>
+
+			<!-- Popup Form -->
+			<div
+				id="popupForm"
+				style="
+					display: none;
+					position: fixed;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					background: white;
+					padding: 1em;
+				"
+			>
+				<form id="projectForm">
+					<label for="projectName">Project Name:</label>
+					<input type="text" id="projectName" required />
+					<br />
+					<button class="project-button" type="submit">
+						➕ Create Project
+					</button>
+					<button type="button" onclick="hidePopup()">Cancel</button>
+				</form>
+			</div>
 			<div class="project-card">
-				<!-- <a class="project-tile" href="material.html">Demo Title</a> -->
 				<ul id="projectList" style="list-style: none"></ul>
 			</div>
 		</main>
 
-		<script src="scripts/sidenav.js"></script>
+		<script>
+			// Show/hide popup form
+			function togglePopup() {
+				var popup = document.getElementById("popupForm");
+				popup.style.display = popup.style.display === "none" ? "block" : "none";
+			}
+
+			// Hide popup form
+			function hidePopup() {
+				var popup = document.getElementById("popupForm");
+				popup.style.display = "none";
+			}
+
+			// Add event listener to Add Project button
+			var addProjectButton = document.getElementById("addProjectButton");
+			addProjectButton.addEventListener("click", togglePopup);
+
+			// Add event listener to form submit
+			var projectForm = document.getElementById("projectForm");
+			projectForm.addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent form from submitting
+				var projectName = document.getElementById("projectName").value;
+				console.log("Project name: " + projectName);
+				hidePopup();
+			});
+		</script>
 
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 		<script src="scripts/connect.js"></script>
 		<script src="scripts/create-project.js"></script>
+		<script src="scripts/sidenav.js"></script>
 	</body>
 </html>
