@@ -51,6 +51,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 		li.addEventListener("click", function () {
 			// Redirect to material.html with project name as query parameter
 			var projectName = this.textContent;
+			console.log(projectName);
 			window.location.href =
 				"day_planner.html?projectName=" + encodeURIComponent(projectName);
 		});
