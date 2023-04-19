@@ -72,7 +72,7 @@
 // form.addEventListener("submit", handleSubmit);
 // render();
 
-// // JavaScript code
+// JavaScript code
 const transactionsRef = db.collection("transactions");
 
 const table = document.querySelector("table");
