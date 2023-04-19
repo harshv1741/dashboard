@@ -7,47 +7,149 @@
 		<link rel="stylesheet" href="stylesheet/style.css" />
 		<link rel="stylesheet" href="stylesheet/sidenav.css" />
 		<link rel="stylesheet" href="stylesheet/fonts.css" />
-
 		<style>
-			/* Add your CSS styles here */
-
-			/* Responsive table */
-			.transactionTable {
-				margin-top: 1em;
+			/* Styles for table */
+			/* table {
 				width: 100%;
 				border-collapse: collapse;
 			}
-			.transactionTable th,
-			.transactionTable td {
+			th,
+			td {
 				padding: 8px;
 				text-align: left;
-				border: 1px solid #ccc;
+				border-bottom: 1px solid #ddd;
 			}
-			.transactionTable th {
-				background-color: #eee;
+			th {
+				background-color: #f2f2f2;
+			} */
+
+			/* Responsive styles */
+			/* @media screen and (max-width: 600px) {
+				table {
+					overflow-x: auto;
+					display: block;
+				}
+			} */
+
+			/* table {
+				margin-top: 2em;
+				border-collapse: collapse;
+				width: 100%;
 			}
-			.transactionTable tbody tr:nth-child(even) {
+			th,
+			td {
+				padding: 8px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+			}
+			th {
+				background-color: #f2f2f2;
+				color: #333;
+			}
+			tr:hover {
+				background-color: #f5f5f5;
+			}
+			.add-row-button {
+				margin-top: 16px;
+				background-color: #4caf50;
+				color: white;
+				padding: 8px 16px;
+				border: none;
+				cursor: pointer;
+				float: right;
+				margin-bottom: 16px;
+			}
+
+			.add-row-button:hover {
+				background-color: #45a049;
+			}
+
+			.form-container {
+				display: none;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				border: 1px solid black;
+				padding: 10px;
 				background-color: #f2f2f2;
 			}
-			.transactionTable tbody tr:nth-child(odd) {
-				background-color: #ffe6e6;
+
+			.form-container label,
+			.form-container input {
+				display: block;
+				margin: 10px 0;
 			}
 
-			/* Add transaction button */
-			.addTransactionBtn {
-				margin-bottom: 10px;
+			.form-container input[type="text"],
+			.form-container input[type="date"] {
+				padding: 5px;
+				border: 1px solid black;
+				border-radius: 3px;
 			}
 
-			/* Delete transaction button */
-			.deleteTransactionBtn {
-				cursor: pointer;
-				color: red;
+			.form-container input[type="submit"],
+			.form-container input[type="button"] {
+				padding: 5px 10px;
+				background-color: #4caf50;
+				color: white;
 				border: none;
-				background: none;
+				border-radius: 3px;
+				cursor: pointer;
 			}
 
-			/* Responsive popup form */
-			.popupForm {
+			.form-container input[type="button"]:hover {
+				background-color: #3e8e41;
+			} */
+
+			/* Table styles */
+			table {
+				margin-top: 3em;
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 24px;
+			}
+
+			th,
+			td {
+				padding: 8px;
+				text-align: left;
+				border-bottom: 1px solid #ddd;
+			}
+
+			th {
+				background-color: #f2f2f2;
+				font-weight: bold;
+			}
+
+			tr.total-row td {
+				font-weight: bold;
+			}
+
+			td.total {
+				text-align: right;
+			}
+
+			/* Button styles */
+			button.add-row-button {
+				display: block;
+				margin: 16px auto;
+				background-color: #0074d9;
+				border: none;
+				border-radius: 4px;
+				color: #fff;
+				cursor: pointer;
+				font-size: 16px;
+				padding: 12px 24px;
+				transition: background-color 0.3s ease-in-out;
+			}
+
+			button.add-row-button:hover {
+				background-color: #0058a3;
+			}
+
+			/* Form styles */
+			.form-container {
 				display: none;
 				position: fixed;
 				top: 0;
@@ -55,38 +157,86 @@
 				width: 100%;
 				height: 100%;
 				background-color: rgba(0, 0, 0, 0.5);
-				justify-content: center;
-				align-items: center;
-				z-index: 9999;
 			}
-			.popupForm form {
+
+			.form-container form {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
 				background-color: #fff;
-				padding: 20px;
-				border-radius: 5px;
-				width: 300px;
+				padding: 24px;
+				border-radius: 4px;
+				box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+				width: 80%;
+				max-width: 500px;
 			}
-			.popupForm input[type="text"],
-			.popupForm input[type="date"],
-			.popupForm input[type="number"] {
-				width: 100%;
+
+			.form-container h2 {
+				font-size: 24px;
+				margin-bottom: 16px;
+			}
+
+			.form-container label {
+				display: block;
+				font-weight: bold;
+				margin-bottom: 8px;
+			}
+
+			.form-container input[type="date"],
+			.form-container input[type="text"],
+			.form-container input[type="number"] {
 				padding: 8px;
-				margin-bottom: 10px;
 				border: 1px solid #ccc;
-				border-radius: 3px;
-			}
-			.popupForm button {
+				border-radius: 4px;
+				margin-bottom: 16px;
+				font-size: 16px;
 				width: 100%;
-				padding: 8px;
-				background-color: #007bff;
-				color: #fff;
-				border: none;
-				border-radius: 3px;
-				cursor: pointer;
 			}
-			.popupForm button.cancelBtn {
-				background-color: #ccc;
+
+			.form-container .price-input-container {
+				display: flex;
+				align-items: center;
+			}
+
+			.form-container .price-input-container .rupee-symbol {
+				margin-right: 8px;
+			}
+
+			.form-container button[type="submit"],
+			.form-container button.cancel-button {
+				color: #fff;
+				font-size: 16px;
+				border: none;
+				border-radius: 4px;
+				margin-top: 16px;
+				cursor: pointer;
+				transition: background-color 0.3s ease-in-out;
+			}
+
+			.form-container button[type="submit"] {
+				background-color: #3e8e41;
+				padding: 12px 24px;
+			}
+
+			.form-container button.cancel-button {
+				background-color: #ddd;
+				padding: 12px 24px;
+			}
+
+			.form-container button[type="submit"]:hover,
+			.form-container button.cancel-button:hover {
+				background-color: #555;
+			}
+
+			@media screen and (max-width: 768px) {
+				.form-container form {
+					width: 90%;
+					max-width: none;
+				}
 			}
 		</style>
+
 		<title>Transaction</title>
 	</head>
 	<body>
@@ -100,6 +250,7 @@
 				<a href="material.html">Material</a>
 				<a href="transaction.html">Transaction</a>
 				<a href="photos.html">Photos</a>
+				<a href="day_planner.html">Day Schedular</a>
 			</div>
 
 			<!-- Heading Page -->
@@ -114,6 +265,55 @@
 				</div>
 			</div>
 
+			<!-- Transaction Table -->
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Description</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="total-row">
+						<td>Total:</td>
+						<td></td>
+						<td class="total">₹0.00</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="add-row-button">Add Row</button>
+			<div class="form-container">
+				<form>
+					<h2>Add Transaction</h2>
+					<label for="date">Date:</label>
+					<input type="date" id="date" name="date" />
+					<label for="description">Description:</label>
+					<input type="text" id="description" name="description" />
+					<label for="price">Price:</label>
+					<div class="price-input-container">
+						<span class="rupee-symbol">₹</span>
+						<input type="number" id="price" name="price" step=".01" />
+					</div>
+					<button
+						type="submit"
+						style="background-color: #3e8e41; padding: 12px 24px"
+					>
+						Save
+					</button>
+					<button
+						type="button"
+						class="cancel-button"
+						style="background-color: #ddd; padding: 12px 24px"
+					>
+						Cancel
+					</button>
+				</form>
+			</div>
+
+			<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+			<script src="scripts/connect.js"></script>
 			<script src="scripts/transaction.js"></script>
 			<script src="scripts/sidenav.js"></script>
 		</main>

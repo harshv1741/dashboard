@@ -9,66 +9,37 @@
 		<link rel="stylesheet" href="stylesheet/fonts.css" />
 		<style>
 			table {
-				width: 100%;
 				border-collapse: collapse;
+				width: 100%;
+				margin-bottom: 20px;
 			}
-
 			th,
 			td {
-				border: 1px solid black;
-				padding: 8px;
 				text-align: left;
+				padding: 8px;
+				border: 1px solid #ddd;
 			}
-
 			th {
 				background-color: #f2f2f2;
+				color: #444;
+				font-weight: normal;
 			}
-
-			tr:nth-child(even) {
-				background-color: #f9f9f9;
+			td:last-child {
+				text-align: center;
 			}
-
+			.action-button {
+				display: inline-block;
+				padding: 8px 16px;
+				font-size: 14px;
+				font-weight: bold;
+				text-decoration: none;
+				background-color: #4caf50;
+				color: white;
+				border-radius: 4px;
+			}
 			.add-button {
-				margin-top: 10px;
-			}
-			table {
-				width: 100%;
-				border-collapse: collapse;
-			}
-
-			th,
-			td {
-				border: 1px solid black;
-				padding: 8px;
-				text-align: left;
-			}
-
-			th {
-				background-color: #f2f2f2;
-			}
-
-			tr:nth-child(even) {
-				background-color: #f9f9f9;
-			}
-
-			.add-button {
-				margin-top: 10px;
-			}
-
-			/* Responsive design for smaller screens */
-			@media screen and (max-width: 600px) {
-				table {
-					font-size: 12px;
-				}
-
-				th,
-				td {
-					padding: 4px;
-				}
-
-				.add-button {
-					font-size: 12px;
-				}
+				display: block;
+				margin-top: 20px;
 			}
 		</style>
 		<title>Material</title>
@@ -84,6 +55,7 @@
 				<a href="material.html">Material</a>
 				<a href="transaction.html">Transaction</a>
 				<a href="photos.html">Photos</a>
+				<a href="day_planner.html">Day Schedular</a>
 			</div>
 
 			<!-- Material Heading -->
@@ -98,7 +70,7 @@
 				</div>
 			</div>
 
-			<h1>Material Inventory</h1>
+			<!-- <h1>Material Inventory</h1>
 			<table id="materialTable">
 				<tr>
 					<th>Material Name</th>
@@ -119,33 +91,47 @@
 					<td><button onclick="deleteMaterial(1)">Delete</button></td>
 				</tr>
 			</table>
-			<button class="add-button" onclick="addMaterial()">Add Material</button>
+			<button class="add-button" onclick="addMaterial()">Add Material</button> -->
 
-			<script>
-				function addMaterial() {
-					var materialTable = document.getElementById("materialTable");
-					var newRow = materialTable.insertRow(-1);
-					var materialNameCell = newRow.insertCell(0);
-					var purchasedCell = newRow.insertCell(1);
-					var currentStockCell = newRow.insertCell(2);
-					var actionCell = newRow.insertCell(3);
-
-					materialNameCell.innerHTML =
-						"<input type='text' id='materialNameInput'>";
-					purchasedCell.innerHTML = "<input type='number' id='purchasedInput'>";
-					currentStockCell.innerHTML =
-						"<input type='number' id='currentStockInput'>";
-					actionCell.innerHTML =
-						"<button onclick='deleteMaterial(" +
-						newRow.rowIndex +
-						")'>Delete</button>";
-				}
-
-				function deleteMaterial(rowNum) {
-					var materialTable = document.getElementById("materialTable");
-					materialTable.deleteRow(rowNum);
-				}
-			</script>
+			<h1>Material Inventory</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Material Name</th>
+				<th>Purchased</th>
+				<th>Current Stock</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Steel</td>
+				<td>100 units</td>
+				<td>50 units</td>
+				<td><a href="#" class="action-button">Edit</a></td>
+			</tr>
+			<tr>
+				<td>Wood</td>
+				<td>200 units</td>
+				 <td>150 units</td>
+				<td><a href="#" class="action-button">Edit</a></td>
+			</tr>
+			<tr>
+				<td>Plastic</td>
+				<td>500 units</td>
+				<td>400 units</td>
+				<td><a href="#" class="action-button">Edit</a></td>
+			</tr>
+			<tr>
+				<td>Glass</td>
+				<td>300 units</td>
+				<td>200 units</td>
+				<td><a href="#" class="action-button">Edit</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="#" class="add-button">Add Material</a>
+</body>
 
 			<script src="scripts/sidenav.js"></script>
 		</main>

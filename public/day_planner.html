@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="stylesheet/sidenav.css" />
+		<link rel="stylesheet" href="stylesheet/style.css" />
+		<link rel="stylesheet" href="stylesheet/fonts.css" />
+		<style>
+			.add-task-button {
+				padding: 12px 24px;
+				border-radius: 30px;
+				background-color: #370062;
+			}
+
+			/* .add-task-button:hover {
+			} */
+
+			h1 {
+				font-size: 36px;
+				text-align: center;
+			}
+
+			.date-container {
+				color: #000;
+				text-align: center;
+			}
+
+			.date-container h2 {
+				font-size: 60px;
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+			.date-container p {
+				font-size: 24px;
+				margin-top: 2px;
+			}
+		</style>
+		<title>Day Schedular</title>
+	</head>
+	<body>
+		<main>
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+					>&times;</a
+				>
+				<a href="index.html">Home</a>
+				<a href="material.html">Material</a>
+				<a href="transaction.html">Transaction</a>
+				<a href="photos.html">Photos</a>
+				<a href="day_planner.html">Day Schedular</a>
+			</div>
+
+			<div class="heading2">
+				<div style="text-align: left">
+					<span
+						style="font-size: 20px; cursor: pointer; align-items: end"
+						onclick="openNav()"
+						>&#9776;</span
+					>
+					<span style="padding: 0.2em; margin-left: 35%"> Meetings </span>
+				</div>
+			</div>
+
+			<!-- Date Container -->
+			<div class="date-container">
+				<h2 id="day" style="font-size: 100px"></h2>
+				<p
+					id="month-year"
+					style="font-size: 16px; font-weight: 700; color: blueviolet"
+				></p>
+			</div>
+
+			<!-- Today's Task Section -->
+			<div class="today-task-container" style="margin-top: 6em">
+				<h3>Today's Task</h3>
+				<button class="add-task-button" onclick="showAddTaskForm()">➕</button>
+			</div>
+
+			<!-- Add Task Form -->
+			<div class="popup-form" id="add-task-form" style="display: none">
+				<h3>Add Task</h3>
+				<form id="task-form">
+					<div class="form-input">
+						<label for="task-name">Task Name</label>
+						<input
+							type="text"
+							id="task-name"
+							name="task-name"
+							placeholder="Enter task name"
+							required
+						/>
+					</div>
+					<div class="form-input">
+						<label for="task-time">Time</label>
+						<input type="time" id="task-time" name="task-time" required />
+					</div>
+					<div class="form-input">
+						<label for="task-completed">Completed</label>
+						<input type="checkbox" id="task-completed" name="task-completed" />
+					</div>
+					<div class="form-input button-container">
+						<button type="submit">Add Task</button>
+						<button type="button" class="cancel" onclick="hideAddTaskForm()">
+							Cancel
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<table id="task-table">
+				<thead>
+					<tr>
+						<th>Task Name</th>
+						<th>Time</th>
+						<th>Completed</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Table rows will be added dynamically with JavaScript -->
+				</tbody>
+			</table>
+
+			<script src="scripts/day_planner.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+			<script src="scripts/connect.js"></script>
+			<script src="scripts/sidenav.js"></script>
+		</main>
+	</body>
+</html>
