@@ -91,7 +91,7 @@ const transactionsRef = db.collection("transactions");
 const table = document.querySelector("table");
 const tbody = table.querySelector("tbody");
 const totalRow = table.querySelector(".total-row");
-const totalCell = totalRow.querySelector(".total");
+// const totalCell = totalRow.querySelector(".total");
 const addRowButton = document.querySelector(".add-row-button");
 const formContainer = document.querySelector(".form-container");
 const form = formContainer.querySelector("form");
@@ -101,6 +101,8 @@ let transactions = [];
 
 function render() {
 	tbody.innerHTML = "";
+
+	let total = 0; // initialize total to zero
 
 	transactionsRef.get().then((querySnapshot) => {
 		querySnapshot.forEach((doc) => {
