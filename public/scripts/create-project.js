@@ -21,7 +21,8 @@ document
 // Listen for real-time updates on Firestore collection
 db.collection("projects").onSnapshot(function (querySnapshot) {
 	var projectList = document.getElementById("projectList");
-	projectList.innerHTML = ""; // Clear the list before re-rendering
+	projectList.innerHTML = ""; 
+  // Clear the list before re-rendering
 
 	querySnapshot.forEach(function (doc) {
 		var li = document.createElement("li");
