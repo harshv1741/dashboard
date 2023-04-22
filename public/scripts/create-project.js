@@ -21,8 +21,8 @@ document
 // Listen for real-time updates on Firestore collection
 db.collection("projects").onSnapshot(function (querySnapshot) {
 	var projectList = document.getElementById("projectList");
-	projectList.innerHTML = ""; 
-  // Clear the list before re-rendering
+	projectList.innerHTML = "";
+	// Clear the list before re-rendering
 
 	querySnapshot.forEach(function (doc) {
 		var li = document.createElement("li");
@@ -31,6 +31,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 
 		var deleteButton = document.createElement("button");
 		deleteButton.style.marginLeft = "10px";
+		deleteButton.style.color = "red";
 		deleteButton.textContent = "Delete";
 		deleteButton.setAttribute("data-id", doc.id);
 		deleteButton.addEventListener("click", function (event) {
@@ -50,11 +51,12 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 		});
 
 		li.addEventListener("click", function () {
-			// Redirect to material.html with project name as query parameter
+			// Save project name to local storage
 			var projectName = this.textContent;
-			console.log(projectName);
-			window.location.href =
-				"day_planner.html?projectName=" + encodeURIComponent(projectName);
+			localStorage.setItem("projectName", projectName);
+
+			// Redirect to day_planner.html
+			window.location.href = "day_planner.html";
 		});
 
 		li.appendChild(deleteButton);

@@ -187,7 +187,7 @@
 			</button>
 
 			<!-- Popup Form -->
-			<div id="popupForm" class="popup-form">
+			<div id="addProjectPopupForm" class="popup-form">
 				<div class="overlay" onclick="hidePopup()"></div>
 				<div class="form-container">
 					<form id="projectForm" class="project-form">
@@ -217,13 +217,13 @@
 		<script>
 			// Show/hide popup form
 			function togglePopup() {
-				var popup = document.getElementById("popupForm");
+				var popup = document.getElementById("addProjectPopupForm");
 				popup.style.display = popup.style.display === "none" ? "block" : "none";
 			}
 
 			// Hide popup form
 			function hidePopup() {
-				var popup = document.getElementById("popupForm");
+				var popup = document.getElementById("addProjectPopupForm");
 				popup.style.display = "none";
 			}
 
