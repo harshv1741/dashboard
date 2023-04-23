@@ -87,6 +87,7 @@
 
 			.create-button {
 				background-color: #55acee;
+				border: none;
 				color: #ffffff;
 				margin-right: 10px;
 			}
@@ -97,6 +98,7 @@
 
 			.cancel-button {
 				background-color: #dddddd;
+				border: none;
 				color: #333333;
 			}
 
@@ -104,51 +106,19 @@
 				background-color: #cccccc;
 			}
 
-			/* Project Card Form */
-
-			.project-card li {
-				display: inline-block;
-				width: 200px;
-				height: 200px;
-				margin: 10px;
-				background-color: #fff;
-				border: 1px solid #ccc;
-				border-radius: 10px;
-				text-align: center;
-				position: relative;
+			/* Project Form */
+			#projectList {
+				list-style: none;
+				padding: 0;
 			}
 
-			.project-card li:before {
-				content: "";
-				display: block;
-				padding-top: 100%;
-			}
-
-			.project-card li img {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 80px;
-				height: 80px;
-			}
-
-			.project-card li button {
-				position: absolute;
-				bottom: 10px;
-				right: 10px;
-				background-color: transparent;
-				border: none;
-				cursor: pointer;
-			}
-
-			.project-card li button i {
-				display: block;
-				width: 30px;
-				height: 30px;
-				background: url("https://image.flaticon.com/icons/svg/1214/1214428.svg")
-					no-repeat center center;
-				background-size: contain;
+			#projectList li {
+				background-color: #ccc;
+				color: black;
+				font-weight: 700;
+				padding: 10px;
+				margin-bottom: 10px;
+				border-radius: 5px;
 			}
 		</style>
 		<title>Home</title>
@@ -179,16 +149,33 @@
 					margin: 1em;
 					padding: 1em;
 					border-radius: 20px;
+					font-weight: 400;
+					color: #892be2;
 					border: none;
-					background-color: #ff471a;
+					background: transparent;
 				"
 			>
-				Add Project
+				+ Add Project
+			</button>
+
+			<button
+				id="deleteProjectButton"
+				style="
+					margin: 1em;
+					padding: 1em;
+					font-weight: 400;
+					color: #892be2;
+					background: transparent;
+					border-radius: 20px;
+					border: none;
+				"
+			>
+				- Delete Project
 			</button>
 
 			<!-- Popup Form -->
 			<div id="addProjectPopupForm" class="popup-form">
-				<div class="overlay" onclick="hidePopup()"></div>
+				<div class="overlay" onclick="hideAddPopup()"></div>
 				<div class="form-container">
 					<form id="projectForm" class="project-form">
 						<label for="projectName" class="form-label">Project Name:</label>
@@ -200,7 +187,38 @@
 							<button
 								class="form-button cancel-button"
 								type="button"
-								onclick="hidePopup()"
+								onclick="hideAddPopup()"
+							>
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Popup Form -->
+			<div id="deletePopupForm" class="popup-form">
+				<div class="overlay" onclick="hideDeletePopup()"></div>
+				<div class="form-container">
+					<form id="deleteForm" class="delete-form">
+						<p>Enter The Project Name To Delete</p>
+						<label for="deleteProjectName" class="form-label"
+							>Project Name:</label
+						>
+						<input
+							type="text"
+							id="deleteProjectName"
+							class="form-input"
+							required
+						/>
+						<div class="form-buttons">
+							<button class="form-button delete-button" type="submit">
+								Delete
+							</button>
+							<button
+								class="form-button cancel-button"
+								type="button"
+								onclick="hideDeletePopup()"
 							>
 								Cancel
 							</button>
@@ -216,24 +234,50 @@
 
 		<script>
 			// Show/hide popup form
-			function togglePopup() {
+			function toggleAddPopup() {
 				var popup = document.getElementById("addProjectPopupForm");
 				popup.style.display = popup.style.display === "none" ? "block" : "none";
 			}
 
+			function toggleDeletePopup() {
+				var popup = document.getElementById("deletePopupForm");
+				popup.style.display = popup.style.display === "none" ? "block" : "none";
+			}
+
 			// Hide popup form
-			function hidePopup() {
+			function hideAddPopup() {
 				var popup = document.getElementById("addProjectPopupForm");
+				popup.style.display = "none";
+			}
+
+			function hideDeletePopup() {
+				var popup = document.getElementById("deletePopupForm");
+				popup.style.display = "none";
+			}
+
+			function deletePopupForm() {
+				var popup = document.getElementById("deletePopupForm");
 				popup.style.display = "none";
 			}
 
 			// Add event listener to Add Project button
 			var addProjectButton = document.getElementById("addProjectButton");
-			addProjectButton.addEventListener("click", togglePopup);
+			addProjectButton.addEventListener("click", toggleAddPopup);
+
+			var deleteProjectButton = document.getElementById("deleteProjectButton");
+			deleteProjectButton.addEventListener("click", toggleDeletePopup);
 
 			// Add event listener to form submit
 			var projectForm = document.getElementById("projectForm");
 			projectForm.addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent form from submitting
+				var projectName = document.getElementById("projectName").value;
+				console.log("Project name: " + projectName);
+				hideAddPopup();
+			});
+
+			var deleteForm = document.getElementById("deleteForm");
+			deleteForm.addEventListener("submit", function (event) {
 				event.preventDefault(); // Prevent form from submitting
 				var projectName = document.getElementById("projectName").value;
 				console.log("Project name: " + projectName);

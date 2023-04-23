@@ -18,6 +18,10 @@ document
 			});
 	});
 
+document
+	.getElementById("deleteForm")
+	.addEventListener("submit", function (event) {});
+
 // Listen for real-time updates on Firestore collection
 db.collection("projects").onSnapshot(function (querySnapshot) {
 	var projectList = document.getElementById("projectList");
@@ -29,27 +33,6 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 		li.textContent = doc.id;
 		li.style.cursor = "pointer"; // Add cursor style for clickable element
 
-		var deleteButton = document.createElement("button");
-		deleteButton.style.marginLeft = "10px";
-		deleteButton.style.color = "red";
-		deleteButton.textContent = "Delete";
-		deleteButton.setAttribute("data-id", doc.id);
-		deleteButton.addEventListener("click", function (event) {
-			event.stopPropagation(); // Prevent event propagation
-			var projectId = this.getAttribute("data-id");
-
-			// Delete project from Firestore
-			db.collection("projects")
-				.doc(projectId)
-				.delete()
-				.then(function () {
-					console.log("Project deleted with name: ", projectId);
-				})
-				.catch(function (error) {
-					console.error("Error deleting project: ", error);
-				});
-		});
-
 		li.addEventListener("click", function () {
 			// Save project name to local storage
 			var projectName = this.textContent;
@@ -59,7 +42,6 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 			window.location.href = "day_planner.html";
 		});
 
-		li.appendChild(deleteButton);
 		projectList.appendChild(li);
 	});
 });

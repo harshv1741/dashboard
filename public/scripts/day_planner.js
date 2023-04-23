@@ -1,6 +1,7 @@
 // Initialize Firestore
-
 // JavaScript to update the date displayed on the page
+
+const projectName = localStorage.getItem("projectName");
 const date = new Date();
 const dayElement = document.getElementById("day");
 const monthYearElement = document.getElementById("month-year");
@@ -37,7 +38,9 @@ const form = document.getElementById("task-form");
 const table = document.getElementById("task-table");
 
 // Retrieve the tasks from Firestore and display them in the table
-db.collection("tasks")
+db.collection("projects")
+	.doc(projectName)
+	.collection("tasks")
 	.get()
 	.then((querySnapshot) => {
 		querySnapshot.forEach((doc) => {
@@ -52,7 +55,9 @@ db.collection("tasks")
 			completedCheckbox.type = "checkbox";
 			completedCheckbox.checked = task.completed;
 			completedCheckbox.addEventListener("change", function () {
-				db.collection("tasks")
+				db.collection("projects")
+					.doc(projectName)
+					.collection("tasks")
 					.doc(doc.id)
 					.update({ completed: completedCheckbox.checked });
 			});
@@ -68,18 +73,21 @@ form.addEventListener("submit", function (event) {
 	const time = document.getElementById("task-time").value;
 	const completed = document.getElementById("task-completed").checked;
 
-	// Create a new document in the "tasks" collection with the task data
-	db.collection("tasks")
-		.add({
+	// Create a new document in the "tasks" collection with the task data and doc ID in format "task 1"
+	db.collection("projects")
+		.doc(projectName)
+		.collection("tasks")
+		.doc(`task ${table.rows.length}`)
+		.set({
 			name: name,
 			time: time,
 			completed: completed,
 		})
-		.then((docRef) => {
-			console.log("Document written with ID: ", docRef.id);
+		.then(() => {
+			console.log("Document successfully written!");
 		})
 		.catch((error) => {
-			console.error("Error adding document: ", error);
+			console.error("Error writing document: ", error);
 		});
 
 	const newRow = table.insertRow();
@@ -95,8 +103,10 @@ form.addEventListener("submit", function (event) {
 	completedCheckbox.type = "checkbox";
 	completedCheckbox.checked = completed;
 	completedCheckbox.addEventListener("change", function () {
-		db.collection("tasks")
-			.doc(docRef.id)
+		db.collection("projects")
+			.doc(projectName)
+			.collection("tasks")
+			.doc(`task ${table.rows.length}`)
 			.update({ completed: completedCheckbox.checked });
 	});
 	completedCell.innerHTML = "";

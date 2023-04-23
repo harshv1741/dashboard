@@ -72,6 +72,7 @@
 			}
 
 			/* Form styles */
+			/* Add animation to form container */
 			.form-container {
 				display: none;
 				position: fixed;
@@ -80,6 +81,17 @@
 				width: 100%;
 				height: 100%;
 				background-color: rgba(0, 0, 0, 0.5);
+				animation: fade-in 0.5s ease-in-out forwards;
+			}
+
+			/* Define animation */
+			@keyframes fade-in {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
 			}
 
 			.form-container form {

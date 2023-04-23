@@ -1,4 +1,9 @@
-const transactionsRef = db.collection("transactions");
+const projectName = localStorage.getItem("projectName");
+
+const transactionsRef = db
+	.collection("projects")
+	.doc(projectName)
+	.collection("transactions");
 
 const table = document.querySelector("table");
 const tbody = table.querySelector("tbody");
