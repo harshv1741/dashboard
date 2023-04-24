@@ -18,9 +18,26 @@ document
 			});
 	});
 
+// Add event listener for delete button in popup form
 document
 	.getElementById("deleteForm")
-	.addEventListener("submit", function (event) {});
+	.addEventListener("submit", function (event) {
+		event.preventDefault();
+		var projectName = document.getElementById("deleteProjectName").value;
+
+		// Delete project document from Firestore
+		db.collection("projects")
+			.doc(projectName)
+			.delete()
+			.then(function () {
+				console.log("Project deleted with name: ", projectName);
+				// Hide delete popup form
+				hideDeletePopup();
+			})
+			.catch(function (error) {
+				console.error("Error deleting project: ", error);
+			});
+	});
 
 // Listen for real-time updates on Firestore collection
 db.collection("projects").onSnapshot(function (querySnapshot) {
