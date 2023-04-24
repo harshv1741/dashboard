@@ -38,9 +38,16 @@
 
 			/* Button styles */
 			button.add-row-button {
+				/* set position to fixed */
+				position: fixed;
+				/* position at the bottom center */
+				bottom: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				/* other styles */
 				display: block;
 				margin: 16px auto;
-				background-color: #0074d9;
+				background-color: #00d936;
 				border: none;
 				border-radius: 4px;
 				color: #fff;
@@ -199,25 +206,7 @@
 				</div>
 			</div>
 
-			<!-- Transaction Table -->
-			<!-- <table>
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>Description</th>
-						<th>Amount</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="total-row">
-						<td>Total:</td>
-						<td></td>
-						<td class="total">₹0.00</td>
-					</tr>
-				</tbody>
-			</table> -->
-
+			<!-- Table Page -->
 			<table>
 				<thead>
 					<tr>
@@ -239,7 +228,7 @@
 				</tfoot>
 			</table>
 
-			<button class="add-row-button">Add Row</button>
+			<button class="add-row-button">Add Transaction</button>
 			<!-- <button class="delete-row-button">Delete Row</button> -->
 
 			<div class="form-container">
