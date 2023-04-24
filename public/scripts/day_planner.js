@@ -55,12 +55,36 @@ db.collection("projects")
 			completedCheckbox.type = "checkbox";
 			completedCheckbox.checked = task.completed;
 			completedCheckbox.addEventListener("change", function () {
-				db.collection("projects")
-					.doc(projectName)
-					.collection("tasks")
-					.doc(doc.id)
-					.update({ completed: completedCheckbox.checked });
+				if (completedCheckbox.checked) {
+					// Delete the corresponding task from Firestore and the table
+					db.collection("projects")
+						.doc(projectName)
+						.collection("tasks")
+						.doc(doc.id)
+						.delete()
+						.then(() => {
+							console.log("Document successfully deleted!");
+							newRow.remove();
+						})
+						.catch((error) => {
+							console.error("Error deleting document: ", error);
+						});
+				} else {
+					// Update the completed status in Firestore
+					db.collection("projects")
+						.doc(projectName)
+						.collection("tasks")
+						.doc(doc.id)
+						.update({ completed: false })
+						.then(() => {
+							console.log("Document successfully updated!");
+						})
+						.catch((error) => {
+							console.error("Error updating document: ", error);
+						});
+				}
 			});
+
 			completedCell.innerHTML = "";
 			completedCell.appendChild(completedCheckbox);
 		});
