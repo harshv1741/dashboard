@@ -96,6 +96,17 @@
 				background-color: #4aa6e8;
 			}
 
+			.delete-button {
+				background-color: #ee5555;
+				border: none;
+				color: #ffffff;
+				margin-right: 10px;
+			}
+
+			.delete-button:hover {
+				background-color: #e84a4a;
+			}
+
 			.cancel-button {
 				background-color: #dddddd;
 				border: none;
@@ -182,7 +193,7 @@
 						<input type="text" id="projectName" class="form-input" required />
 						<div class="form-buttons">
 							<button class="form-button create-button" type="submit">
-								Create Project
+								Create
 							</button>
 							<button
 								class="form-button cancel-button"
@@ -201,7 +212,6 @@
 				<div class="overlay" onclick="hideDeletePopup()"></div>
 				<div class="form-container">
 					<form id="deleteForm" class="delete-form">
-						<p>Enter The Project Name To Delete</p>
 						<label for="deleteProjectName" class="form-label"
 							>Project Name:</label
 						>
