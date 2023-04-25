@@ -16,6 +16,7 @@ document
 			.catch(function (error) {
 				console.error("Error adding project: ", error);
 			});
+		window.location.reload();
 	});
 
 // Add event listener for delete button in popup form

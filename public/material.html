@@ -4,9 +4,42 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Materials</title>
+		<link rel="stylesheet" href="stylesheet/style.css" />
+		<link rel="stylesheet" href="stylesheet/sidenav.css" />
+		<link rel="stylesheet" href="stylesheet/fonts.css" />
+		<link rel="stylesheet" href="stylesheet/transaction.css" />
+		<title>Transaction</title>
 	</head>
 	<body>
-		<main></main>
+		<main>
+			<!-- Sidenav Page -->
+			<div id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+					>&times;</a
+				>
+				<a href="index.html">Home</a>
+				<a href="day_planner.html">Day Schedular</a>
+				<a href="transaction.html">Transaction</a>
+				<a href="photos.html">Photos</a>
+			</div>
+
+			<!-- Heading Page -->
+			<div class="heading2">
+				<div style="text-align: left">
+					<span
+						style="font-size: 20px; cursor: pointer; align-items: end"
+						onclick="openNav()"
+						>&#9776;</span
+					>
+					<span style="padding: 0.2em; margin-left: 30%"> Material </span>
+				</div>
+			</div>
+		</main>
+
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+		<script src="scripts/connect.js"></script>
+		<script src="scripts/material.js"></script>
+		<script src="scripts/sidenav.js"></script>
 	</body>
 </html>
