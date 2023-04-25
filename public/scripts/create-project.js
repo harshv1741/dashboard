@@ -47,9 +47,19 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 	// Clear the list before re-rendering
 
 	querySnapshot.forEach(function (doc) {
+		var div = document.createElement("div"); // Create a new div element
 		var li = document.createElement("li");
 		li.textContent = doc.id;
 		li.style.cursor = "pointer"; // Add cursor style for clickable element
+
+		// Adding Div Styling
+		div.style.backgroundColor = "#ccc";
+		div.style.display = "flex";
+		div.style.justifyContent = "space-between";
+		div.style.alignItems = "center";
+		div.style.padding = "10px";
+		div.style.margin = "10px";
+		div.style.borderRadius = "20px";
 
 		li.addEventListener("click", function () {
 			// Save project name to local storage
@@ -59,6 +69,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 			window.location.href = "day_planner.html";
 		});
 
-		projectList.appendChild(li);
+		div.appendChild(li); // Append the li element as a child of the div
+		projectList.appendChild(div);
 	});
 });

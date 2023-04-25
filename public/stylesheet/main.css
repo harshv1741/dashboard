@@ -114,10 +114,10 @@
 }
 
 #projectList li {
-	background-color: #ccc;
+	/* background-color: #ccc; */
 	color: black;
 	font-weight: 700;
 	padding: 10px;
-	margin-bottom: 10px;
-	border-radius: 5px;
+	/* margin-bottom: 10px; */
+	/* border-radius: 5px; */
 }
