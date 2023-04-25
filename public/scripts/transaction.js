@@ -71,7 +71,7 @@ function render() {
 				const deleteButton = document.createElement("button");
 				deleteButton.classList.add("delete-row-button");
 				deleteButton.textContent = "Delete";
-				deleteButton.addEventListener("touchend", () => {
+				deleteButton.addEventListener("click", () => {
 					transactionsRef
 						.doc(doc.id)
 						.delete()
@@ -133,12 +133,12 @@ function handleSubmit(event) {
 	formContainer.style.display = "none";
 }
 
-addRowButton.addEventListener("touchend", () => {
+addRowButton.addEventListener("click", () => {
 	formContainer.style.display = "block";
 	noTransactionMessage.style.display = "none";
 });
 
-cancelButton.addEventListener("touchend", () => {
+cancelButton.addEventListener("click", () => {
 	form.reset();
 	formContainer.style.display = "none";
 	noTransactionMessage.style.display = "block";

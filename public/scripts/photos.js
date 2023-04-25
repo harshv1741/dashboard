@@ -44,8 +44,8 @@ function viewPhoto(fileName) {
 			// Set the src attribute of the img element to the download URL
 			var img = document.createElement("img");
 			img.src = url;
-			img.style.maxWidth = "200px"; // Set max width to 200px
-			img.style.maxHeight = "200px"; // Set max height to 200px
+			img.style.maxWidth = "400px"; // Set max width to 200px
+			img.style.maxHeight = "400px"; // Set max height to 200px
 			photoDisplay.innerHTML = ""; // Clear previous image display
 			photoDisplay.appendChild(img);
 		})

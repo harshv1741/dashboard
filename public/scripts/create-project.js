@@ -51,7 +51,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 		li.textContent = doc.id;
 		li.style.cursor = "pointer"; // Add cursor style for clickable element
 
-		li.addEventListener("touchend", function () {
+		li.addEventListener("click", function () {
 			// Save project name to local storage
 			var projectName = this.textContent;
 			localStorage.setItem("projectName", projectName);
