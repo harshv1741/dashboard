@@ -1,0 +1,135 @@
+.add-task-button {
+	padding: 12px 24px;
+	border-radius: 30px;
+	background-color: #370062;
+}
+
+/* .add-task-button:hover {
+} */
+
+h1 {
+	font-size: 36px;
+	text-align: center;
+}
+
+.date-container {
+	color: #000;
+	text-align: center;
+}
+
+.date-container h2 {
+	font-size: 60px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.date-container p {
+	font-size: 24px;
+	margin-top: 2px;
+}
+
+/* Popup Form */
+.popup-form {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	z-index: 999;
+	width: 400px;
+	transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 500px) {
+	.popup-form {
+		width: 90%;
+	}
+}
+
+.popup-form h3 {
+	margin-top: 0;
+	font-size: 1.2rem;
+}
+
+.form-input {
+	margin-bottom: 10px;
+}
+
+.form-input label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.form-input input[type="text"],
+.form-input input[type="time"],
+.form-input input[type="checkbox"] {
+	display: block;
+	width: 100%;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 1rem;
+}
+
+.form-input input[type="checkbox"] {
+	display: inline-block;
+	width: auto;
+	margin-right: 5px;
+}
+
+.button-container {
+	text-align: right;
+}
+
+.button-container button {
+	background-color: #0077cc;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+}
+
+.button-container button.cancel {
+	background-color: #ccc;
+	color: #000;
+	margin-right: 10px;
+}
+
+.button-container button:hover {
+	background-color: #0066b3;
+}
+
+/* Day Schedular Table */
+
+#task-table {
+	margin-top: 1em;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#task-table th,
+#task-table td {
+	border: 1px solid #ccc;
+	padding: 8px;
+	text-align: left;
+}
+
+#task-table th {
+	background-color: #f2f2f2;
+}
+
+#task-table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#task-table tr:hover {
+	background-color: #ddd;
+}

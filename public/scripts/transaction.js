@@ -13,6 +13,7 @@ const addRowButton = document.querySelector(".add-row-button");
 const formContainer = document.querySelector(".form-container");
 const form = formContainer.querySelector("form");
 const cancelButton = formContainer.querySelector(".cancel-button");
+const noTransactionMessage = document.querySelector(".no-transaction-message");
 
 let transactions = [];
 
@@ -30,54 +31,79 @@ function render() {
 	transactions = []; // clear transactions array
 
 	transactionsRef.get().then((querySnapshot) => {
-		querySnapshot.forEach((doc) => {
-			const transaction = doc.data();
-			transactions.push(transaction); // add transaction to transactions array
-			const row = document.createElement("tr");
+		if (querySnapshot.size === 0) {
+			// show "No Transaction" message
+			const noTransactionMessage = document.querySelector(
+				".no-transaction-message"
+			);
+			noTransactionMessage.style.display = "block";
+			table.style.display = "none";
+		} else {
+			// hide "No Transaction" message
+			const noTransactionMessage = document.querySelector(
+				".no-transaction-message"
+			);
+			noTransactionMessage.style.display = "none";
+			table.style.display = "block";
 
-			const dateCell = document.createElement("td");
-			dateCell.textContent = transaction.date;
-			row.appendChild(dateCell);
+			querySnapshot.forEach((doc) => {
+				const transaction = doc.data();
+				transactions.push(transaction); // add transaction to transactions array
+				const row = document.createElement("tr");
 
-			const descriptionCell = document.createElement("td");
-			descriptionCell.textContent = transaction.description;
-			row.appendChild(descriptionCell);
+				const dateCell = document.createElement("td");
+				dateCell.textContent = transaction.date;
+				row.appendChild(dateCell);
 
-			const priceCell = document.createElement("td");
-			const priceText = transaction.price.toLocaleString("en-IN", {
-				style: "currency",
-				currency: "INR",
+				const descriptionCell = document.createElement("td");
+				descriptionCell.textContent = transaction.description;
+				row.appendChild(descriptionCell);
+
+				const priceCell = document.createElement("td");
+				const priceText = transaction.price.toLocaleString("en-IN", {
+					style: "currency",
+					currency: "INR",
+				});
+				priceCell.textContent = priceText;
+				row.appendChild(priceCell);
+
+				const deleteCell = document.createElement("td");
+				const deleteButton = document.createElement("button");
+				deleteButton.classList.add("delete-row-button");
+				deleteButton.textContent = "Delete";
+				deleteButton.addEventListener("click", () => {
+					transactionsRef
+						.doc(doc.id)
+						.delete()
+						.then(() => {
+							console.log("Transaction deleted successfully!");
+							tbody.removeChild(row); // remove row from tbody
+							transactions = transactions.filter(
+								(t) => t.date !== transaction.date // remove transaction from transactions array
+							);
+							calculateTotal(); // recalculate total
+
+							if (tbody.children.length === 0) {
+								// show "No Transaction" message
+								const noTransactionMessage = document.querySelector(
+									".no-transaction-message"
+								);
+								noTransactionMessage.style.display = "block";
+								table.style.display = "none";
+							}
+						})
+						.catch((error) => {
+							console.error("Error deleting transaction: ", error);
+						});
+				});
+				deleteCell.appendChild(deleteButton);
+				row.appendChild(deleteCell);
+
+				tbody.appendChild(row);
 			});
-			priceCell.textContent = priceText;
-			row.appendChild(priceCell);
 
-			const deleteCell = document.createElement("td");
-			const deleteButton = document.createElement("button");
-			deleteButton.classList.add("delete-row-button");
-			deleteButton.textContent = "Delete";
-			deleteButton.addEventListener("click", () => {
-				transactionsRef
-					.doc(doc.id)
-					.delete()
-					.then(() => {
-						console.log("Transaction deleted successfully!");
-						tbody.removeChild(row); // remove row from tbody
-						transactions = transactions.filter(
-							(t) => t.date !== transaction.date // remove transaction from transactions array
-						);
-						calculateTotal(); // recalculate total
-					})
-					.catch((error) => {
-						console.error("Error deleting transaction: ", error);
-					});
-			});
-			deleteCell.appendChild(deleteButton);
-			row.appendChild(deleteCell);
-
-			tbody.appendChild(row);
-		});
-
-		calculateTotal(); // calculate total
+			calculateTotal(); // calculate total
+		}
 	});
 }
 
@@ -108,11 +134,13 @@ function handleSubmit(event) {
 
 addRowButton.addEventListener("click", () => {
 	formContainer.style.display = "block";
+	noTransactionMessage.style.display = "none";
 });
 
 cancelButton.addEventListener("click", () => {
 	form.reset();
 	formContainer.style.display = "none";
+	noTransactionMessage.style.display = "block";
 });
 
 form.addEventListener("submit", handleSubmit);
