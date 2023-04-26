@@ -1,4 +1,5 @@
-const projectName = localStorage.getItem("projectName");
+const projectName = sessionStorage.getItem("projectName");
+console.log();
 
 const transactionsRef = db
 	.collection("projects")

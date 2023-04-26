@@ -1,7 +1,7 @@
 // Initialize Firestore
 // JavaScript to update the date displayed on the page
 
-const projectName = localStorage.getItem("projectName");
+const projectName = sessionStorage.getItem("projectName");
 const date = new Date();
 const dayElement = document.getElementById("day");
 const monthYearElement = document.getElementById("month-year");

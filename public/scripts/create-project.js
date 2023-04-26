@@ -64,7 +64,7 @@ db.collection("projects").onSnapshot(function (querySnapshot) {
 		li.addEventListener("click", function () {
 			// Save project name to local storage
 			var projectName = this.textContent;
-			localStorage.setItem("projectName", projectName);
+			sessionStorage.setItem("projectName", projectName);
 			// Redirect to day_planner.html
 			window.location.href = "day_planner.html";
 		});
