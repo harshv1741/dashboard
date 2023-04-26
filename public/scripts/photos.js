@@ -1,5 +1,9 @@
 var storage = firebase.storage();
-var storageRef = storage.ref();
+
+const projectName = localStorage.getItem("projectName");
+console.log(projectName);
+
+var storageRef = storage.ref().child(projectName); // Create a folder named Based on project in Storage
 var photoList = document.getElementById("photoList");
 var photoDisplay = document.getElementById("photoDisplay"); // Get the photo display div element
 
@@ -14,6 +18,7 @@ function uploadPhoto() {
 		.then(function (snapshot) {
 			console.log("Uploaded a file:", snapshot.metadata.fullPath);
 			addPhotoToList(fileName);
+			document.getElementById("photoInput").value = ""; // Reset photoInput
 		})
 		.catch(function (error) {
 			console.error("Failed to upload file:", error);
@@ -29,6 +34,7 @@ function deletePhoto(fileName) {
 		.then(function () {
 			console.log("Deleted file:", fileName);
 			removePhotoFromList(fileName);
+			window.location.reload();
 		})
 		.catch(function (error) {
 			console.error("Failed to delete file:", error);
@@ -44,8 +50,8 @@ function viewPhoto(fileName) {
 			// Set the src attribute of the img element to the download URL
 			var img = document.createElement("img");
 			img.src = url;
-			img.style.maxWidth = "400px"; // Set max width to 200px
-			img.style.maxHeight = "400px"; // Set max height to 200px
+			img.style.width = "350px"; // Set max width to 200px
+			img.style.height = "420px"; // Set max height to 200px
 			photoDisplay.innerHTML = ""; // Clear previous image display
 			photoDisplay.appendChild(img);
 		})
@@ -66,6 +72,8 @@ function addPhotoToList(fileName) {
 	viewButton.style.color = "white";
 	viewButton.style.padding = "12px 24px";
 	viewButton.style.borderRadius = "40px";
+	listItem.style.padding = "10px";
+	listItem.style.fontWeight = "bold";
 	viewButton.onclick = function () {
 		viewPhoto(fileName);
 	};
