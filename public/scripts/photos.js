@@ -34,7 +34,6 @@ function deletePhoto(fileName) {
 		.then(function () {
 			console.log("Deleted file:", fileName);
 			removePhotoFromList(fileName);
-			window.location.reload();
 		})
 		.catch(function (error) {
 			console.error("Failed to delete file:", error);

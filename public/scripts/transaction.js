@@ -117,7 +117,6 @@ function addTransaction(date, description, price) {
 		})
 		.then(() => {
 			console.log("Transaction added successfully!");
-			window.location.reload();
 		})
 		.catch((error) => {
 			console.error("Error adding transaction: ", error);
