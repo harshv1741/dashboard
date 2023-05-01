@@ -25,6 +25,8 @@ function uploadPhoto() {
 		.catch(function (error) {
 			console.error("Failed to upload file:", error);
 		});
+
+	setTimeout(() => window.location.reload(), 1000);
 }
 
 // Delete photo

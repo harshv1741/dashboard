@@ -140,4 +140,5 @@ form.addEventListener("submit", function (event) {
 
 	form.reset();
 	hideAddTaskForm();
+	setTimeout(() => window.location.reload(), 1000);
 });

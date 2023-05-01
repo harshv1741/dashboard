@@ -123,6 +123,8 @@ function addTransaction(date, description, price) {
 		.catch((error) => {
 			console.error("Error adding transaction: ", error);
 		});
+
+	setTimeout(() => window.location.reload(), 1000);
 }
 
 function handleSubmit(event) {
