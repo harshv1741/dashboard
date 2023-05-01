@@ -1,4 +1,6 @@
 const projectName = sessionStorage.getItem("projectName");
+const pName = document.querySelector("#pName");
+pName.textContent = projectName;
 console.log();
 
 const transactionsRef = db

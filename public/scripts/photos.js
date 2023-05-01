@@ -1,6 +1,8 @@
 var storage = firebase.storage();
 
 const projectName = sessionStorage.getItem("projectName");
+const pName = document.querySelector("#pName");
+pName.textContent = projectName;
 console.log(projectName);
 
 var storageRef = storage.ref().child(projectName); // Create a folder named Based on project in Storage

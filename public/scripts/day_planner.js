@@ -2,6 +2,8 @@
 // JavaScript to update the date displayed on the page
 
 const projectName = sessionStorage.getItem("projectName");
+const pName = document.querySelector("#pName");
+pName.textContent = projectName;
 const date = new Date();
 const dayElement = document.getElementById("day");
 const monthYearElement = document.getElementById("month-year");
