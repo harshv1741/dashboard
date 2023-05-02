@@ -124,7 +124,7 @@ function addTransaction(date, description, price) {
 			console.error("Error adding transaction: ", error);
 		});
 
-	setTimeout(() => window.location.reload(), 1000);
+	setTimeout(() => window.location.reload(), 4000);
 }
 
 function handleSubmit(event) {
